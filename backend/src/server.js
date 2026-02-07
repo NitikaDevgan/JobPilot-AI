@@ -1,6 +1,6 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
-import connectDB from "./config/db.js";
+import connectDB from "../src/config.js/db.js";
 
 dotenv.config();
 
