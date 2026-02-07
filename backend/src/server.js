@@ -1,21 +1,15 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
+import connectDB from "./config/db.js";
 
 dotenv.config();
 
-const app = Fastify({ logger: true });
+const fastify = Fastify({ logger: true });
 
-app.get("/health", async () => {
-  return { status: "OK", message: "JobPilot AI Backend Running 🚀" };
+connectDB();
+
+fastify.get("/", async () => {
+  return { status: "JobPilot backend running 🚀" };
 });
 
-const start = async () => {
-  try {
-    await app.listen({ port: process.env.PORT || 4000, host: "0.0.0.0" });
-  } catch (err) {
-    app.log.error(err);
-    process.exit(1);
-  }
-};
-
-start();
+fastify.listen({ port: process.env.PORT || 4000, host: "0.0.0.0" });
