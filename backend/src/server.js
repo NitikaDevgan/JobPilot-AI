@@ -1,10 +1,12 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
 import connectDB from "../src/config.js/db.js";
+import jobRoutes from "../src/routes/jobRoutes.js";
 
 dotenv.config();
 
 const fastify = Fastify({ logger: true });
+fastify.register(jobRoutes, { prefix: "/api" });
 
 connectDB();
 
