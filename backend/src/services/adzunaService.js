@@ -24,3 +24,11 @@ export const fetchJobsFromAdzuna = async ({
 
   return response.data.results;
 };
+
+
+// adzunaService.js is a service layer that talks to the Adzuna API on behalf of your backend.
+// It:
+// Calls Adzuna’s API
+// Sends your app_id & app_key
+// Fetches job listings
+// Returns clean job data to your controllers
