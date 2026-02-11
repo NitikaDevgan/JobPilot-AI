@@ -31,4 +31,4 @@ export const fetchJobsFromAdzuna = async ({
 // Calls Adzuna’s API
 // Sends your app_id & app_key
 // Fetches job listings
-// Returns clean job data to your controllers
+// Returns clean job data to your controllers- this is the heart of the api integration.
