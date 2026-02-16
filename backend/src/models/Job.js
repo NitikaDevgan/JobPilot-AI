@@ -2,26 +2,23 @@ import mongoose from "mongoose";
 
 const jobSchema = new mongoose.Schema(
   {
+    adzunaId: {
+      type: String,
+      required: true,
+      unique: true, // prevents duplicates
+    },
     title: String,
     company: String,
     location: String,
     description: String,
-
-    skills: [String],
-    jobType: {
+    category: String,
+    salaryMin: Number,
+    salaryMax: Number,
+    redirectUrl: String,
+    source: {
       type: String,
-      enum: ["Full-time", "Part-time", "Contract", "Internship"],
+      default: "adzuna",
     },
-    workMode: {
-      type: String,
-      enum: ["Remote", "Hybrid", "On-site"],
-    },
-
-    postedAt: Date,
-    applyUrl: String,
-
-    source: String, // Adzuna, etc.
-    matchScore: Number, // AI score (0–100)
   },
   { timestamps: true }
 );

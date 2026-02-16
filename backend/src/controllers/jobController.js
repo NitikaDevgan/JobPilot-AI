@@ -31,3 +31,25 @@ export const fetchAndStoreJobs = async (req, reply) => {
     count: formattedJobs.length,
   });
 };
+
+export const fetchJobsFromAPI = async (req, res) => {
+  try {
+    const jobs = await fetchAndSaveJobs(req.query);
+    res.status(200).json({
+      message: "Jobs fetched & saved successfully",
+      count: jobs.length,
+      jobs,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const getSavedJobs = async (req, res) => {
+  try {
+    const jobs = await Job.find().sort({ createdAt: -1 });
+    res.status(200).json(jobs);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
