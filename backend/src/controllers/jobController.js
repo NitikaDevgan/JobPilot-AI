@@ -1,5 +1,5 @@
 import Job from "../models/Job.js";
-import { fetchJobsFromAdzuna } from "../services/adzunaService.js";
+import { fetchJobsFromAdzuna,fetchAndSaveJobs  } from "../services/adzunaService.js";
 
 export const createJob = async (req, reply) => {
   const job = await Job.create(req.body);
