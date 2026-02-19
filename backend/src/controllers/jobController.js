@@ -1,5 +1,6 @@
 import Job from "../models/Job.js";
-import { fetchJobsFromAdzuna,fetchAndSaveJobs  } from "../services/adzunaService.js";
+import { fetchAndSaveJobs } from "../services/adzunaService.js";
+
 
 export const createJob = async (req, reply) => {
   const job = await Job.create(req.body);
@@ -12,7 +13,7 @@ export const getJobs = async (req, reply) => {
 };
 
 export const fetchAndStoreJobs = async (req, reply) => {
-  const jobs = await fetchJobsFromAdzuna(req.query);
+  const jobs = await fetchAndSaveJobs(req.query);
 
   const formattedJobs = jobs.map((job) => ({
     title: job.title,
