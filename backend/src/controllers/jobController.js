@@ -1,17 +1,20 @@
 import Job from "../models/Job.js";
 import { fetchAndSaveJobs } from "../services/adzunaService.js";
 
-
+//creating a job
 export const createJob = async (req, reply) => {
   const job = await Job.create(req.body);
   reply.code(201).send(job);
 };
 
+//get job 
 export const getJobs = async (req, reply) => {
   const jobs = await Job.find().sort({ createdAt: -1 });
   reply.send(jobs);
 };
 
+
+//fetching and storing jobs 
 export const fetchAndStoreJobs = async (req, reply) => {
   const jobs = await fetchAndSaveJobs(req.query);
 
@@ -33,6 +36,7 @@ export const fetchAndStoreJobs = async (req, reply) => {
   });
 };
 
+//fetch from api
 export const fetchJobsFromAPI = async (req, res) => {
   try {
     const jobs = await fetchAndSaveJobs(req.query);
