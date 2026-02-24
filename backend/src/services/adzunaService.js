@@ -2,7 +2,7 @@ import axios from "axios";
 import Job from "../models/Job.js";
 
 const ADZUNA_BASE_URL = "https://api.adzuna.com/v1/api/jobs";
-const COUNTRY = "in";
+const COUNTRY = process.env.ADZUNA_COUNTRY;
 
 const APP_ID = process.env.ADZUNA_APP_ID;
 const APP_KEY = process.env.ADZUNA_APP_KEY;
